@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- For old IEs -->
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+
+  <!-- For new browsers - multisize ico  -->
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="favicon/favicon.ico">
+
+  <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/favicon-152-precomposed.png">
+
+  <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/favicon-144-precomposed.png">
+
+  <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/favicon-120-precomposed.png">
+
+  <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/favicon-114-precomposed.png">
+
+  <!-- For iPhone 6+ -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-180-precomposed.png">
+
+  <!-- For first- and second-generation iPad: -->
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/favicon-72-precomposed.png">
+
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon" href="favicon/favicon-57.png">
+
+  <!-- For Old Chrome -->
+  <link rel="icon" href="favicon/favicon-32.png" sizes="32x32">
+
+  <!-- For IE10 Metro -->
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="favicon-144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Chrome for Android -->
+  <link rel="manifest" href="favicon/manifest.json">
+  <link rel="icon" sizes="192x192" href="favicon/favicon-192.png">
+
+  <!-- Using latest stable Fluid Player version 2.x styling -->
+  <link rel="stylesheet" href="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css">
+  <!-- Include fluidplayer.js and dash.js in your page -->
+  <script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>
+
+  <title>Bao Bao Feng Bao Player</title>
+</head>
+
+<body>
+  <main role="main" id="main">
+    <video id="player" controls>
+      <!-- DASH-Playlist location -->
+      <source src="/{{ .VideoDirectory }}/playlist.mpd" type="application/dash+xml">
+      <!-- HLS-Playlist location -->
+      <source src="/{{ .VideoDirectory }}/playlist.m3u8" type="application/x-mpegURL">
+      <p>
+        To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.
+      </p>
+    </video>
+    <div>
+      <p> Like this mix? Like a song? Add the song or playlist to your Apple Music Library
+      </p>
+      <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="{{ .PlaylistURI }}">
+      </iframe>
+    </div>
+  </main>
+
+  <script>
+    /* Initialize Fluid Player */
+    fluidPlayer(
+      'player',
+      /* Options */
+      {
+        layoutControls: {
+          /* location of .vtt file containing the thumbnails */
+          timelinePreview: {
+              file: '/{{ .VideoDirectory }}/thumbnails/thumbnails.vtt',
+              spriteRelativePath: true,
+              type: 'VTT'
+          },
+          /* theme */
+          layout: 'default',
+          /* enable responsive behavior */
+          fillToContainer: true, /* Default true */
+          posterImage: '/{{ .VideoDirectory }}/thumbnails/poster.png' /* Default false */
+        }
+      }
+    );
+  </script>
+</html>

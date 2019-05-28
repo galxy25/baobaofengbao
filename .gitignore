@@ -1,0 +1,12 @@
+# server media assets directory
+520/mixes/
+# raw sources directory
+input/*.*
+# my default name for the output of transforming the raw sources
+input/output/
+# mediafiles
+*.m4a
+*.mp3
+*.ts
+*.mp4
+*.m3u8
