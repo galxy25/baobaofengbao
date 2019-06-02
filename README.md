@@ -15,10 +15,16 @@ This repo also contains a (Golang) HTTP server implementation for listing and se
 
 ## Inputs
 
+Create a directory for the audio and image sources
+
+```
+mkdir input
+```
+
 ## Running
 
 ```
-./transform.sh *.jpeg Episode2.m4a output.mp4
+./transform.sh *.jpeg Episode2.m4a output.mp4 180
 ```
 
 Setup directory for serving the new mix

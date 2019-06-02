@@ -99,5 +99,6 @@ func main() {
     playTemplate = template.Must(template.ParseFiles(fmt.Sprintf("%s/play.html", webPath)))
     http.HandleFunc("/play", playHandler)
     http.Handle("/mixes/", http.FileServer(http.Dir(webPath)))
+    http.Handle("/favicon/", http.FileServer(http.Dir(webPath)))
     http.ListenAndServe(fmt.Sprintf(":%d", serverPort), nil)
 }
