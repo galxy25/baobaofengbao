@@ -17,7 +17,7 @@ OUTPUTFILE=$3
 SECONDSPERIMAGE=$4
 # https://stackoverflow.com/questions/46328198/ffmpeg-image-music-video
 # https://trac.ffmpeg.org/wiki/Slideshow
-ffmpeg -loop 1 -framerate 1/${FRAMESPERIMAGE:-1} -pattern_type glob -i "$IMAGEGLOB" -i "$AUDIOFILE" -c:v libx264 -crf 0 -preset veryfast -tune stillimage -c:a copy -shortest "$OUTPUTFILE"
+ffmpeg -loop 1 -framerate 1/${SECONDSPERIMAGE:-1} -pattern_type glob -i "$IMAGEGLOB" -i "$AUDIOFILE" -c:v libx264 -preset veryfast -tune stillimage -c:a copy -shortest "$OUTPUTFILE"
 # https://alpine-dash-hls.gq
 docker run -v $PWD:/video majamee/alpine-dash-hls $OUTPUTFILE
 cd ../
